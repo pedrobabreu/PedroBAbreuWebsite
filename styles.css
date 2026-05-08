@@ -1721,28 +1721,38 @@ nav a:hover,
 
 @media (max-width: 860px) {
   .site-header {
-    height: 82px;
+    height: 76px;
     align-items: center;
+    gap: 14px;
+    padding: 0 18px;
   }
 
   .site-brand {
     gap: 0;
+    letter-spacing: 0.2em;
   }
 
   .site-brand em {
     display: none;
   }
 
+  .site-brand span {
+    font-size: 13px;
+  }
+
   nav {
     display: grid;
     grid-template-columns: repeat(2, max-content);
     justify-content: end;
-    row-gap: 10px;
+    gap: 8px 12px;
+    font-size: 9px;
+    letter-spacing: 0.14em;
   }
 
   .hero {
     min-height: auto;
-    padding-top: 82px;
+    padding: 76px 0 0;
+    overflow: hidden;
   }
 
   .hero-copy {
@@ -1751,12 +1761,12 @@ nav a:hover,
 
   .hero h1.signature-title {
     position: absolute;
-    right: 18px;
-    bottom: 22px;
+    right: 50%;
+    bottom: 20px;
     left: auto;
     top: auto;
-    transform: rotate(-2deg);
-    width: min(38vw, 280px);
+    transform: translateX(50%) rotate(-2deg);
+    width: min(54vw, 260px);
   }
 
   .loader-video {
@@ -1799,17 +1809,51 @@ nav a:hover,
   }
 
   .hero-media {
-    aspect-ratio: 1.35 / 1;
+    width: 100%;
+    aspect-ratio: 0.86 / 1;
+    clip-path: none;
+    animation: none;
+    background: #050504;
+    overflow: hidden;
+  }
+
+  .hero-media::after {
+    background:
+      radial-gradient(circle at 46% 76%, rgba(244, 239, 228, 0.18), transparent 28%),
+      linear-gradient(180deg, rgba(8, 8, 6, 0.14), transparent 30%, rgba(8, 8, 6, 0.72));
+  }
+
+  .hero-media iframe {
+    width: 320%;
+    min-width: 320%;
+    height: 142%;
+    min-height: 142%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  .hero-poster {
+    object-position: center center;
   }
 
   .hero-statement {
-    left: 8%;
-    top: 42%;
-    max-width: 78%;
+    left: 24px;
+    top: 18%;
+    max-width: calc(100% - 48px);
+    transform: none;
   }
 
-  .hero-statement h1 {
-    font-size: clamp(32px, 8vw, 62px);
+  .hero-statement p {
+    margin-bottom: 12px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  .hero .hero-statement h1 {
+    max-width: 280px;
+    font-size: clamp(34px, 9.4vw, 46px);
+    line-height: 0.98;
   }
 
   .hero-awards {
@@ -1818,17 +1862,58 @@ nav a:hover,
     height: auto;
     width: calc(100% + (var(--page-x) * 2));
     max-width: none;
+    min-height: 96px;
+    margin-left: calc(var(--page-x) * -1);
+    overflow: hidden;
+  }
+
+  .hero-awards::before {
+    left: 18px;
+    font-size: 8px;
+  }
+
+  .hero-awards::after {
+    width: 128px;
+  }
+
+  .awards-track {
+    min-height: 96px;
+    padding: 18px 0 18px 118px;
+    animation-duration: 44s;
   }
 
   .hero-awards .laurel {
     position: relative;
-    width: clamp(166px, 44vw, 220px);
+    flex-basis: 154px;
+    width: 154px;
     transform: none;
   }
 
   .laurel {
-    min-height: 56px;
-    padding: 0 16px;
+    min-height: 52px;
+    grid-template-columns: 20px 1fr;
+    gap: 1px 8px;
+    padding: 0 12px;
+  }
+
+  .laurel svg {
+    width: 18px;
+    height: 38px;
+  }
+
+  .laurel span,
+  .laurel em {
+    font-size: 6.5px;
+  }
+
+  .laurel strong {
+    max-width: 112px;
+    font-size: 7.8px;
+  }
+
+  .award-link {
+    flex-basis: 126px;
+    font-size: 7px;
   }
 
   .hero-bottom {
@@ -1922,15 +2007,15 @@ nav a:hover,
   }
 
   .hero {
-    padding-top: 82px;
+    padding-top: 76px;
   }
 
   .hero-awards {
-    position: static;
+    position: relative;
     transform: none;
     display: block;
     width: calc(100% + (var(--page-x) * 2));
-    max-width: 100%;
+    max-width: none;
   }
 
   .laurel {

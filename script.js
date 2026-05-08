@@ -497,7 +497,12 @@ const getVimeoId = (element) => {
 
 const openPlayer = (id) => {
   if (!id || !player || !playerFrame) return;
-  playerFrame.src = `https://player.vimeo.com/video/${id}?autoplay=1&muted=0&title=0&byline=0&portrait=0`;
+  stage?.classList.remove("is-active", "is-archive");
+  if (stageFrame) {
+    stageFrame.classList.remove("active");
+    stageFrame.src = "";
+  }
+  playerFrame.src = `https://player.vimeo.com/video/${id}?autoplay=1&muted=0&autopause=0&title=0&byline=0&portrait=0&playsinline=1`;
   player.classList.add("is-open");
   player.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
